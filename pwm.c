@@ -61,7 +61,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-uint16_t duty=0, fade=1;
+uint8_t duty=0, fade=1;
 int main(void)
 {
 
@@ -92,7 +92,7 @@ int main(void)
   /* USER CODE END WHILE */
 		__HAL_TIM_SET_COMPARE(&htim14, TIM_CHANNEL_1, duty);
 		duty+=fade;
-		if(duty==0 || duty ==100) fade=-fade;
+		if(duty==0 || duty ==99) fade=-fade;
 		HAL_Delay(50);
   /* USER CODE BEGIN 3 */
 
@@ -139,9 +139,9 @@ void MX_TIM14_Init(void)
   TIM_OC_InitTypeDef sConfigOC;
 
   htim14.Instance = TIM14;
-  htim14.Init.Prescaler = 16;
+  htim14.Init.Prescaler = 15;
   htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim14.Init.Period = 100;
+  htim14.Init.Period = 99;
   htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   HAL_TIM_Base_Init(&htim14);
 
